@@ -45,11 +45,27 @@ class addString{
             }));
         }
 }
+class nextGreatestLetterInLeetCode{
+    public char nextGreatestLetter(char[] letters, char target) {
+        int start=0;
+        int end = letters.length-1;
+        while(start<=end){
+            int mid = start + (end-start) / 2;
+            if(target<letters[mid]){
+                end = mid-1;
+            }else{
+                start = start+1;
+            }
+        }
+        return letters[start % letters.length];
+    }
+}
 
 class Leetcode {
     static void main(String[] args) {
-        addString as = new addString();
-        System.out.println(as.addStrings("12345","12"));
+        nextGreatestLetterInLeetCode ngl = new nextGreatestLetterInLeetCode();
+        char[] c={'a','b','c','d'};
+        System.out.println(ngl.nextGreatestLetter(c,'d'));
     }
 }
 
