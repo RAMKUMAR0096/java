@@ -8,6 +8,7 @@ class  FindTheCeilFromTheTarget{
     static int findTheCeil(int[] arr,int target){
         int start=0;
         int end = arr.length-1;
+        System.out.println("Start: "+start+"End: "+end);
         int mid=0;
 
         while(start<=end){
@@ -24,15 +25,47 @@ class  FindTheCeilFromTheTarget{
 
         }
 
-        return arr[mid+=1]; //for index return mid+=1;
+       return arr[start]; //for index return mid+=1;
+
+    }
+
+}
+class  FindTheFloorFromTheTarget{
+//    what is floor ?
+//    The floor is find the biggest element in the array that is lower than or equal to the target
+//    is the floor of the target
+
+    static int findTheFloor(int[] arr,int target){
+        int start=0;
+        int end = arr.length-1;
+        System.out.println("Start: "+start+"End: "+end);
+        int mid=0;
+
+        while(start<=end){
+            mid= start + (end - start)/2;
+            if(arr[mid]==target){
+                return arr[mid];  //for index return mid
+            }
+
+            if(arr[mid]<target){
+                start=mid+1;
+            }else{
+                end = mid -1;
+            }
+
+        }
+
+        System.out.println("Start: "+start+"End: "+end);
+
+        return arr[end]; //for index return mid+=1;
 
     }
 
 }
 
 public class DataStructureAndAlgorithm {
-    static void main(String[] args) {
-        int[] arr = {1,3,5,7,8,10,14};
-        System.out.println(FindTheCeilFromTheTarget.findTheCeil(arr,6));
+    static void main(String[] args)  {
+        int[] arr = {8,10,11};
+        System.out.println(FindTheFloorFromTheTarget.findTheFloor(arr,9));
     }
 }
