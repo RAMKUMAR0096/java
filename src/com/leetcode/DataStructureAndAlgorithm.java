@@ -62,10 +62,43 @@ class  FindTheFloorFromTheTarget{
     }
 
 }
+class FindTheTargetFromInfinityArray{
+
+    static int ans(int arr[],int target){
+        int start = 0;
+        int end =1;
+
+        while (target >arr[end]){
+            int temp = end +1;
+             end = end + (end - start + 1) * 2;
+             start = temp;
+        }
+        return binarySearch(arr,target,start,end);
+    }
+
+    static int binarySearch(int arr[],int target,int start,int end){
+
+        while(start<=end){
+            int mid = start + (end-start)/2;
+            if(target<arr[mid]){
+                end = end-1;
+            } else if (target >arr[mid]) {
+                start = mid+1;
+            }
+            else{
+                return mid;
+            }
+        }
+        return -1;
+    }
+}
 
 public class DataStructureAndAlgorithm {
     static void main(String[] args)  {
-        int[] arr = {8,10,11};
-        System.out.println(FindTheFloorFromTheTarget.findTheFloor(arr,9));
+        int[] arr = {8,10,11,12,15,16,17,18,20,22,30,32,34,37,40,50,56,58,60,62,64,66,69,70,72,79,80,82,84,86,87,88,89,90};
+//        System.out.println(FindTheFloorFromTheTarget.findTheFloor(arr,9));
+        System.out.println(FindTheTargetFromInfinityArray.ans(arr,41));
+
+
     }
 }
