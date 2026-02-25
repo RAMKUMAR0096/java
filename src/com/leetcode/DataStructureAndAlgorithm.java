@@ -1,5 +1,7 @@
 package com.leetcode;
 
+import java.util.Arrays;
+
 class  FindTheCeilFromTheTarget{
 //    what is ceil ?
 //    The ceil is find the smallest element in the array that is greater than or equal to the target
@@ -157,14 +159,39 @@ class FindTheTargetFromRotatedSortedArray{
         return -1;
     }
 }
+class FindTheTargetFrom2DArray{
+    static public int[] findTheTargetFrom2DArray(int[][] arr, int target){
+//        for(int i=0;i<arr.length;i++){
+//            for(int j=i;j<arr.length;j++){
+//                if(arr[i][j] == target){
+//                    return arr[i][j];
+//                }
+//            }
+//        }
+        int r = 0;
+        int c = arr.length -1;
+        System.out.println("colunm length"+ c);
+        while (r < arr.length && c >= 0){
+            if(arr[r][c] == target){
+                return new int[]{r,c};
+            }
+            if(arr[r][c] < target){
+                r++;
+            }else {
+                c--;
+            }
+        }
+        return new int[]{-1,-1};
+    }
+}
 
 public class DataStructureAndAlgorithm {
     static void main(String[] args)  {
 //        int[] arr = {8,10,11,12,15,16,17,18,20,22,30,32,34,37,40,50,56,58,60,62,64,66,69,70,72,79,80,82,84,86,87,88,89,90};
 //        System.out.println(FindTheFloorFromTheTarget.findTheFloor(arr,9));
 //        System.out.println(FindTheTargetFromInfinityArray.ans(arr,41));
-        int arr[] = {3,5,1};
-        System.out.println(FindTheTargetFromRotatedSortedArray.search(arr,3));
+        int arr[][] = {{10,20,30,40},{15,25,35,45},{28,29,37,49},{33,34,38,50}};
+        System.out.println(Arrays.toString(FindTheTargetFrom2DArray.findTheTargetFrom2DArray(arr,49)));
 
 
     }
