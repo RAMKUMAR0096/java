@@ -170,7 +170,6 @@ class FindTheTargetFrom2DArray{
 //        }
         int r = 0;
         int c = arr.length -1;
-        System.out.println("colunm length"+ c);
         while (r < arr.length && c >= 0){
             if(arr[r][c] == target){
                 return new int[]{r,c};
@@ -184,14 +183,35 @@ class FindTheTargetFrom2DArray{
         return new int[]{-1,-1};
     }
 }
+class BubbleSort{
+    static public void bubbleSort(int[] arr){
+        for(int i=0; i < arr.length; i++){
+            boolean isSwaped = false;
+            for(int j=1;j<arr.length - i;j++){
+                if(arr[j] < arr[j-1]){
+                    int temp = arr[j-1];
+                    arr[j-1] = arr[j];
+                    arr[j] = temp;
+                    isSwaped = true;
+                }
+            }
+            if(!isSwaped){
+                break;
+            }
+        }
+    }
+}
 
 public class DataStructureAndAlgorithm {
     static void main(String[] args)  {
 //        int[] arr = {8,10,11,12,15,16,17,18,20,22,30,32,34,37,40,50,56,58,60,62,64,66,69,70,72,79,80,82,84,86,87,88,89,90};
 //        System.out.println(FindTheFloorFromTheTarget.findTheFloor(arr,9));
 //        System.out.println(FindTheTargetFromInfinityArray.ans(arr,41));
-        int arr[][] = {{10,20,30,40},{15,25,35,45},{28,29,37,49},{33,34,38,50}};
-        System.out.println(Arrays.toString(FindTheTargetFrom2DArray.findTheTargetFrom2DArray(arr,49)));
+//        int arr[][] = {{10,20,30,40},{15,25,35,45},{28,29,37,49},{33,34,38,50}};
+//        System.out.println(Arrays.toString(FindTheTargetFrom2DArray.findTheTargetFrom2DArray(arr,49)));
+          int arr[] = { 1,2,9,3,4,10,7,5 ,6,8};
+        BubbleSort.bubbleSort(arr);
+        System.out.println(Arrays.toString(arr));
 
 
     }
