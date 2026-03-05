@@ -201,6 +201,29 @@ class BubbleSort{
         }
     }
 }
+class SelectionSort{
+    public static void selectionSort(int[] arr){
+        for(int i = 0;i < arr.length ; i++){
+            int last = arr.length -i -1;
+            int maxIndex = getMaxIndex(arr, 0, last);
+            swap(arr, maxIndex,last);
+        }
+    }
+    public static int getMaxIndex(int[] arr,int start,int end){
+        int max = start;
+        for(int i=0;i<end;i++){
+            if(arr[max]<arr[i]){
+                max=i;
+            }
+        }
+        return max;
+    }
+    public static void swap(int[] arr, int first,int second){
+        int temp = arr[first];
+        arr[first] = arr[second];
+        arr[second] = temp;
+    }
+}
 
 public class DataStructureAndAlgorithm {
     static void main(String[] args)  {
@@ -209,9 +232,11 @@ public class DataStructureAndAlgorithm {
 //        System.out.println(FindTheTargetFromInfinityArray.ans(arr,41));
 //        int arr[][] = {{10,20,30,40},{15,25,35,45},{28,29,37,49},{33,34,38,50}};
 //        System.out.println(Arrays.toString(FindTheTargetFrom2DArray.findTheTargetFrom2DArray(arr,49)));
-          int arr[] = { 1,2,9,3,4,10,7,5 ,6,8};
-        BubbleSort.bubbleSort(arr);
-        System.out.println(Arrays.toString(arr));
+          int arr[] = { 5, 4, 3, 2, 1};
+//        BubbleSort.bubbleSort(arr);
+//        System.out.println(Arrays.toString(arr));
+          SelectionSort.selectionSort(arr);
+          System.out.println(Arrays.toString(arr));
 
 
     }
