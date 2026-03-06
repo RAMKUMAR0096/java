@@ -224,6 +224,24 @@ class SelectionSort{
         arr[second] = temp;
     }
 }
+class InsertionSort{
+    public static void insertionSort(int[] arr){
+        for(int i=0;i<arr.length-1;i++){
+            for(int j=i+1;j > 0;j--){
+                if(arr[j]>arr[j-1]){
+                    break;
+                }else {
+                    swap(arr,j,j-1);
+                }
+            }
+        }
+    }
+    public static void swap(int[] arr,int first,int second){
+        int temp = arr[first];
+        arr[first]=arr[second];
+        arr[second] = temp;
+    }
+}
 
 public class DataStructureAndAlgorithm {
     static void main(String[] args)  {
@@ -232,10 +250,11 @@ public class DataStructureAndAlgorithm {
 //        System.out.println(FindTheTargetFromInfinityArray.ans(arr,41));
 //        int arr[][] = {{10,20,30,40},{15,25,35,45},{28,29,37,49},{33,34,38,50}};
 //        System.out.println(Arrays.toString(FindTheTargetFrom2DArray.findTheTargetFrom2DArray(arr,49)));
-          int arr[] = { 5, 4, 3, 2, 1};
+          int arr[] = { 3,56,7,9,5,1,2,700,56,49};
 //        BubbleSort.bubbleSort(arr);
 //        System.out.println(Arrays.toString(arr));
-          SelectionSort.selectionSort(arr);
+//          SelectionSort.selectionSort(arr);
+          InsertionSort.insertionSort(arr);
           System.out.println(Arrays.toString(arr));
 
 
