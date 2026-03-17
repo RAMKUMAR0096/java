@@ -261,6 +261,32 @@ class CycleSort{
         arr[second] = temp;
     }
 }
+class Patterns{
+    public static void pattern1(int n){
+        for(int i=1;i<=n;i++){
+            for(int j=1 ;j<=n;j++){
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+    public static void pattern2(int n){
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=i;j++){
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+    public static void pattern3(int n){
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=n+1 -i;j++){
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+}
 
 public class DataStructureAndAlgorithm {
     static void main(String[] args)  {
@@ -275,8 +301,11 @@ public class DataStructureAndAlgorithm {
 //          SelectionSort.selectionSort(arr);
 //          InsertionSort.insertionSort(arr);
 //          System.out.println(Arrays.toString(arr));
-        CycleSort.cycleSort(arr);
-        System.out.println(Arrays.toString(arr));
+//        CycleSort.cycleSort(arr);
+//        System.out.println(Arrays.toString(arr));
+        Patterns p = new Patterns();
+        p.pattern3(5);
+
 
 
     }
