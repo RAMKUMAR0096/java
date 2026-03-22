@@ -286,6 +286,29 @@ class Patterns{
             System.out.println();
         }
     }
+    public static void pattern4(int n){
+        for(int i=1;i<= n;i++){
+            for (int j = 1; j <= i; j++) {
+                System.out.print(j+" ");
+            }
+            System.out.println();
+        }
+    }
+    public static void pattern5(int n){
+        for (int i = 1; i <=(2*n) ; i++) {
+            if ( i <= n){
+                for (int j = 1; j <= i; j++) {
+                    System.out.print("*" + " ");
+                }
+                System.out.println();
+            }else {
+                for (int j = 1; j <= (2*n - i); j++) {
+                    System.out.print("*" + " ");
+                }
+                System.out.println();
+            }
+        }
+    }
 }
 
 public class DataStructureAndAlgorithm {
@@ -304,7 +327,7 @@ public class DataStructureAndAlgorithm {
 //        CycleSort.cycleSort(arr);
 //        System.out.println(Arrays.toString(arr));
         Patterns p = new Patterns();
-        p.pattern3(5);
+        p.pattern5(5);
 
 
 
