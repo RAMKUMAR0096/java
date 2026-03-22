@@ -309,6 +309,20 @@ class Patterns{
             }
         }
     }
+    public static void pattern6(int n){
+        for (int row = 1; row <=n ; row++) {
+            int noOfSpaces = n - row;
+            for (int s = 1; s <=noOfSpaces ; s++) {
+                System.out.print(" ");
+            }
+
+//            print *
+            for (int col = 1; col <= row ; col++) {
+                System.out.print("*"+" ");
+            }
+            System.out.println();
+        }
+    }
 }
 
 public class DataStructureAndAlgorithm {
@@ -327,7 +341,7 @@ public class DataStructureAndAlgorithm {
 //        CycleSort.cycleSort(arr);
 //        System.out.println(Arrays.toString(arr));
         Patterns p = new Patterns();
-        p.pattern5(5);
+        p.pattern6(5);
 
 
 
