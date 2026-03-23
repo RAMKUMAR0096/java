@@ -324,6 +324,14 @@ class Patterns{
         }
     }
 }
+class Recursion{
+    public static int fibonacci (int n){
+        if(n < 2){
+            return n;
+        }
+        return fibonacci(n-1) + fibonacci(n-2);
+    }
+}
 
 public class DataStructureAndAlgorithm {
     static void main(String[] args)  {
@@ -340,8 +348,9 @@ public class DataStructureAndAlgorithm {
 //          System.out.println(Arrays.toString(arr));
 //        CycleSort.cycleSort(arr);
 //        System.out.println(Arrays.toString(arr));
-        Patterns p = new Patterns();
-        p.pattern6(5);
+//        Patterns p = new Patterns();
+//        p.pattern6(5);
+        System.out.println(Recursion.fibonacci(4));
 
 
 
