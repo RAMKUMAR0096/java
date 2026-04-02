@@ -331,6 +331,50 @@ class Recursion{
         }
         return fibonacci(n-1) + fibonacci(n-2);
     }
+
+}
+class MathForDsa{
+    public static boolean isOdd(int n){
+        return  ((n & 1) == 1);
+    }
+    public static int findUnique(int[] arr){
+        int ans =0;
+
+        for (int n : arr){
+            ans = ans ^ n;
+        }
+
+        return ans;
+    }
+    public static int findUnique(int[] arr,int times){
+        int sum = 0;
+        for(int n : arr){
+            sum += n;
+        }
+        System.out.println("sum"+sum);
+        int unique = sum % times;
+
+        return unique;
+    }//not find the answer i need to find the answer
+    public static int findTheNthMagicNumber(int n){
+        int ans = 0;
+        int base = 5;
+
+        while (n > 0){
+            int last = n & 1;
+            n = n>>1;
+            ans += last * base;
+            base = base * 5;
+        }
+
+        return ans;
+
+    }
+    public static int NoOfDigit(int n){
+        int base = 10;
+        int ans = (int)(Math.log(n) / Math.log(base)) + 1;
+        return  ans;
+    }
 }
 
 public class DataStructureAndAlgorithm {
@@ -340,7 +384,7 @@ public class DataStructureAndAlgorithm {
 //        System.out.println(FindTheTargetFromInfinityArray.ans(arr,41));
 //        int arr[][] = {{10,20,30,40},{15,25,35,45},{28,29,37,49},{33,34,38,50}};
 //        System.out.println(Arrays.toString(FindTheTargetFrom2DArray.findTheTargetFrom2DArray(arr,49)));
-          int arr[] = { 5,4,3,2,1};
+          int arr[] = { 2,2,3,2,7,7,8,7,8,8,};
 //        BubbleSort.bubbleSort(arr);
 //        System.out.println(Arrays.toString(arr));
 //          SelectionSort.selectionSort(arr);
@@ -350,9 +394,11 @@ public class DataStructureAndAlgorithm {
 //        System.out.println(Arrays.toString(arr));
 //        Patterns p = new Patterns();
 //        p.pattern6(5);
-        System.out.println(Recursion.fibonacci(4));
 
+//        System.out.println(MathForDsa.findUnique(arr,3));
+//        System.out.println(MathForDsa.findTheNthMagicNumber(3));
 
+        System.out.println(MathForDsa.NoOfDigit(385738959));
 
     }
 }
