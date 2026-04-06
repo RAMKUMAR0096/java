@@ -224,14 +224,24 @@ class FindTheSolutionForRotatedSortedArray33L{
         return -1;
     }
 }
-
+class FlipingAnImage{
+    static int[][] flipinganImage(int[][] image){
+        for(int[] row : image){
+            for (int i=0;i<(image[0].length + 1) /2;i++){
+                int temp = row[i] ^ 1;
+                row[i] = row[image[0].length -i -1] ^ 1;
+                row[image[0].length -i -1] = temp;
+            }
+        }
+        return image;
+    }
+}
 
 
 class Leetcode {
     static void main(String[] args) {
-        nextGreatestLetterInLeetCode ngl = new nextGreatestLetterInLeetCode();
-        char[] c={'a','b','c','d'};
-        System.out.println(ngl.nextGreatestLetter(c,'d'));
+        int[][] image = {{1,1,0},{1,0,1},{0,0,0}};
+        System.out.println(FlipingAnImage.flipinganImage(image));
     }
 }
 

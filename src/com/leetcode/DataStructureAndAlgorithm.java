@@ -377,6 +377,17 @@ class MathForDsa{
     }
 }
 
+class Revision{
+    static int[] reverseArray(int[] arr){
+        for(int i=0;i<arr.length / 2;i++){
+            int temp = arr[i];
+            arr[i] = arr[arr.length -1 -i];
+            arr[arr.length -1 -i] = temp;
+        }
+        return arr;
+    }
+}
+
 public class DataStructureAndAlgorithm {
     static void main(String[] args)  {
 //        int[] arr = {8,10,11,12,15,16,17,18,20,22,30,32,34,37,40,50,56,58,60,62,64,66,69,70,72,79,80,82,84,86,87,88,89,90};
@@ -384,7 +395,7 @@ public class DataStructureAndAlgorithm {
 //        System.out.println(FindTheTargetFromInfinityArray.ans(arr,41));
 //        int arr[][] = {{10,20,30,40},{15,25,35,45},{28,29,37,49},{33,34,38,50}};
 //        System.out.println(Arrays.toString(FindTheTargetFrom2DArray.findTheTargetFrom2DArray(arr,49)));
-          int arr[] = { 2,2,3,2,7,7,8,7,8,8,};
+//          int arr[] = { 2,2,3,2,7,7,8,7,8,8,};
 //        BubbleSort.bubbleSort(arr);
 //        System.out.println(Arrays.toString(arr));
 //          SelectionSort.selectionSort(arr);
@@ -398,7 +409,10 @@ public class DataStructureAndAlgorithm {
 //        System.out.println(MathForDsa.findUnique(arr,3));
 //        System.out.println(MathForDsa.findTheNthMagicNumber(3));
 
-        System.out.println(MathForDsa.NoOfDigit(385738959));
+//        System.out.println(MathForDsa.NoOfDigit(385738959));
+        int[] arr = {1,1,1,0};
+         System.out.println(Arrays.toString(Revision.reverseArray(arr)));
+
 
     }
 }
