@@ -355,7 +355,7 @@ class MathForDsa{
         int unique = sum % times;
 
         return unique;
-    }//not find the answer i need to find the answer
+    }//not find the answer I need to find the answer
     public static int findTheNthMagicNumber(int n){
         int ans = 0;
         int base = 5;
@@ -374,6 +374,19 @@ class MathForDsa{
         int base = 10;
         int ans = (int)(Math.log(n) / Math.log(base)) + 1;
         return  ans;
+    }
+    public static boolean isPrime(int n){
+        if(n <= 1){
+            return false;
+        }
+        int c = 2;
+        while (c * c <=n){
+            if(n % c == 0){
+                return false;
+            }
+            c++;
+        }
+        return true;
     }
 }
 
@@ -410,8 +423,14 @@ public class DataStructureAndAlgorithm {
 //        System.out.println(MathForDsa.findTheNthMagicNumber(3));
 
 //        System.out.println(MathForDsa.NoOfDigit(385738959));
-        int[] arr = {1,1,1,0};
-         System.out.println(Arrays.toString(Revision.reverseArray(arr)));
+//        int[] arr = {1,1,1,0};
+//         System.out.println(Arrays.toString(Revision.reverseArray(arr)));
+        for (int i = 0; i <= 40; i++) {
+            if(MathForDsa.isPrime(i)){
+                System.out.println(i);
+            }
+//            System.out.println(i + " " + MathForDsa.isPrime(i));
+        }
 
 
     }
