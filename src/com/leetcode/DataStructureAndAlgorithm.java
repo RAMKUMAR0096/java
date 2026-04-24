@@ -453,6 +453,15 @@ class MathForDsa{
             System.out.print(list.get(i) + " ");
         }
     }
+    public static int HCF(int a,int b){
+        if( a == 0){
+            return b;
+        }
+        return HCF(b%a,a);
+    }
+    public static int LCM(int a,int b){
+        return a*b / HCF(a,b);
+    }
 }
 
 class Revision{
@@ -499,7 +508,7 @@ public class DataStructureAndAlgorithm {
 //        System.out.printf("%.3f",MathForDsa.sqrt(40,3));
 //        System.out.println();
 //        System.out.println(MathForDsa.newtonSqrt(40));
-        MathForDsa.factors2(20);
-
+//        MathForDsa.factors2(20);
+        System.out.println(MathForDsa.LCM(4,16));
     }
 }
