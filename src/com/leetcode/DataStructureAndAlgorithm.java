@@ -1,5 +1,6 @@
 package com.leetcode;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 class  FindTheCeilFromTheTarget{
@@ -428,6 +429,30 @@ class MathForDsa{
         }
         return root;
     }
+    public static void factors1(int n){
+        for(int i = 1; i <= n;i++){
+            if(n % i == 0){
+                System.out.print(i + " ");
+            }
+        }
+    }
+    public static void factors2(int n){
+        ArrayList<Integer> list = new ArrayList<Integer>();
+
+        for(int i = 1; i <= Math.sqrt(n); i++){
+            if(n % i  == 0){
+                if(i == n/i){
+                    System.out.println(i);
+                }else{
+                    System.out.print(i + " ");
+                    list.add(n/i);
+                }
+            }
+        }
+        for(int i=list.size()-1 ;i>=0;i--){
+            System.out.print(list.get(i) + " ");
+        }
+    }
 }
 
 class Revision{
@@ -471,9 +496,10 @@ public class DataStructureAndAlgorithm {
 //            }
 //         System.out.println(i + " " + MathForDsa.isPrime(i));
 //        }
-        System.out.printf("%.3f",MathForDsa.sqrt(40,3));
-        System.out.println();
-        System.out.println(MathForDsa.newtonSqrt(40));
+//        System.out.printf("%.3f",MathForDsa.sqrt(40,3));
+//        System.out.println();
+//        System.out.println(MathForDsa.newtonSqrt(40));
+        MathForDsa.factors2(20);
 
     }
 }
