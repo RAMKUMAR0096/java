@@ -388,6 +388,46 @@ class MathForDsa{
         }
         return true;
     }
+    public static double sqrt(int n,int p){
+        int start = 0;
+        int end = n;
+        double root = 0.0;
+        while (start <= end){
+            int mid = start + (end - start)/2;
+            if(mid * mid == n){
+                return mid;
+            }
+            if(mid * mid > n){
+                end = mid - 1;
+            }else {
+                start = mid + 1;
+            }
+        }
+
+        double incr = 0.1;
+        for (int i = 0; i < p; i++) {
+            while (root * root <= n){
+                root+= incr;
+            }
+            root-= incr;
+            incr /= 10;
+        }
+        return root;
+    }
+    public static double newtonSqrt(double n){
+        double x = n;
+        double root;
+
+        while (true){
+            root = 0.5 * (x + (n/x));
+
+            if(Math.abs(root - x) < 0.1) {
+                break;
+            }
+            x = root;
+        }
+        return root;
+    }
 }
 
 class Revision{
@@ -425,13 +465,15 @@ public class DataStructureAndAlgorithm {
 //        System.out.println(MathForDsa.NoOfDigit(385738959));
 //        int[] arr = {1,1,1,0};
 //         System.out.println(Arrays.toString(Revision.reverseArray(arr)));
-        for (int i = 0; i <= 40; i++) {
-            if(MathForDsa.isPrime(i)){
-                System.out.println(i);
-            }
-//            System.out.println(i + " " + MathForDsa.isPrime(i));
-        }
-
+//        for (int i = 0; i <= 40; i++) {
+//            if(MathForDsa.isPrime(i)){
+//                System.out.println(i);
+//            }
+//         System.out.println(i + " " + MathForDsa.isPrime(i));
+//        }
+        System.out.printf("%.3f",MathForDsa.sqrt(40,3));
+        System.out.println();
+        System.out.println(MathForDsa.newtonSqrt(40));
 
     }
 }
