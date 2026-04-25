@@ -463,6 +463,41 @@ class MathForDsa{
         return a*b / HCF(a,b);
     }
 }
+class Recursion2{
+    public static int printNum(int n){
+        if(n == 1){
+            return 1;
+        }
+        System.out.println(n);
+        return printNum(n-1);
+    }
+    public static void printNumRev(int n){
+        if(n == 0){
+            return;
+        }
+
+        printNumRev(n-1);
+        System.out.println(n);
+    }
+    public static void printNumBoth(int n){
+        if( n == 0){
+            return;
+        }
+        System.out.println(n);
+        printNumBoth(n-1);
+        System.out.println(n);
+    }
+    public static int factorial(int n){
+        if(n == 1){
+            return 1;
+        }
+        return n * factorial(n-1);
+    }
+    public static int sumOfSeries(int n){
+        if( n == 1 ) return 1;
+        return n + sumOfSeries(n-1);
+    }
+}
 
 class Revision{
     static int[] reverseArray(int[] arr){
@@ -509,6 +544,8 @@ public class DataStructureAndAlgorithm {
 //        System.out.println();
 //        System.out.println(MathForDsa.newtonSqrt(40));
 //        MathForDsa.factors2(20);
-        System.out.println(MathForDsa.LCM(4,16));
+
+//        Recursion2.printNumBoth(5);
+        System.out.println(Recursion2.sumOfSeries(5));
     }
 }
