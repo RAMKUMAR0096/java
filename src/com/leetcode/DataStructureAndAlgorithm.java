@@ -497,6 +497,18 @@ class Recursion2{
         if( n == 1 ) return 1;
         return n + sumOfSeries(n-1);
     }
+    public static int sumOfDigit(int n){
+        if( n == 0){
+            return 0;
+        }
+        return (n%10) + sumOfDigit(n/10);
+    }
+    public static int productOfDigit(int n){
+        if(n % 10 == n){
+            return n;
+        }
+        return (n % 10) * productOfDigit(n / 10);
+    }
 }
 
 class Revision{
@@ -546,6 +558,9 @@ public class DataStructureAndAlgorithm {
 //        MathForDsa.factors2(20);
 
 //        Recursion2.printNumBoth(5);
-        System.out.println(Recursion2.sumOfSeries(5));
+//        System.out.println(Recursion2.sumOfSeries(5));
+
+        System.out.println(Recursion2.sumOfDigit(1956));
+        System.out.println(Recursion2.productOfDigit(14));
     }
 }
