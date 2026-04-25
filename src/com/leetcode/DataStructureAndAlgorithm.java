@@ -558,6 +558,14 @@ class Recursion2{
         return helpeer(n/10,count);
     }
 }
+class RecursionInArray{
+    public static boolean isSorted(int[] arr,int index){
+        if(index == arr.length -1){
+            return true;
+        }
+        return arr[index] < arr[index + 1] && isSorted(arr,index+1);
+    }
+}
 
 class Revision{
     static int[] reverseArray(int[] arr){
@@ -614,6 +622,9 @@ public class DataStructureAndAlgorithm {
 //        Recursion2.reverseNumberusingOneVariable(123);
 //        System.out.println(Recursion2.s);
 //        System.out.println(Recursion2.recerseNum(12340));
-        System.out.println(Recursion2.countZeroFromTheGivenNumber(1000004005));
+//        System.out.println(Recursion2.countZeroFromTheGivenNumber(1000004005));
+        int[] arr = { 1, 2, 3, 14, 5, 6, 7};
+        boolean ans = RecursionInArray.isSorted(arr,0);
+        System.out.println(ans);
     }
 }
