@@ -565,6 +565,43 @@ class RecursionInArray{
         }
         return arr[index] < arr[index + 1] && isSorted(arr,index+1);
     }
+    public static boolean findTheTargetUsingLinearSearch(int[] arr, int target,int index){
+        if(index == arr.length){
+            return false;
+        }
+        if(arr[index] == target){
+            return true;
+        }
+
+        return findTheTargetUsingLinearSearch(arr,target,index+1);
+    }
+    public static int findTheTargetUsingLinearSearchAndReturnTheIndex(int[] arr, int target,int index){
+        if(index == arr.length){
+            return -1;
+        }
+        if(arr[index] == target){
+            return index;
+        }
+        return findTheTargetUsingLinearSearchAndReturnTheIndex(arr,target,index+1);
+    }
+    public static int findTheTargetFromLastUsingLinearSearchAndReturnTheIndex(int[] arr,int target,int index){
+        if(index == -1){
+            return -1;
+        }
+        if(arr[index] == target){
+            return index;
+        }
+        return findTheTargetFromLastUsingLinearSearchAndReturnTheIndex(arr,target,index-1);
+    }
+    public static ArrayList<Integer> findTheTargetUsingLinearSearchAndReturnTheArrayList(int[] arr,int target,int index,ArrayList<Integer> list){
+        if(index == arr.length){
+            return list;
+        }
+        if(arr[index] == target){
+            list.add(index);
+        }
+        return findTheTargetUsingLinearSearchAndReturnTheArrayList(arr,target,index + 1,list);
+    }
 }
 
 class Revision{
@@ -623,8 +660,10 @@ public class DataStructureAndAlgorithm {
 //        System.out.println(Recursion2.s);
 //        System.out.println(Recursion2.recerseNum(12340));
 //        System.out.println(Recursion2.countZeroFromTheGivenNumber(1000004005));
-        int[] arr = { 1, 2, 3, 14, 5, 6, 7};
-        boolean ans = RecursionInArray.isSorted(arr,0);
-        System.out.println(ans);
+        int[] arr = { 1, 2, 3, 4, 4, 5, 6, 7};
+        System.out.println(RecursionInArray.findTheTargetUsingLinearSearch(arr,4,0));
+        System.out.println(RecursionInArray.findTheTargetUsingLinearSearchAndReturnTheIndex(arr,4,0));
+        System.out.println(RecursionInArray.findTheTargetFromLastUsingLinearSearchAndReturnTheIndex(arr,4,arr.length-1));
+        System.out.println(RecursionInArray.findTheTargetUsingLinearSearchAndReturnTheArrayList(arr, 4,0, new ArrayList<>()));
     }
 }
