@@ -509,6 +509,30 @@ class Recursion2{
         }
         return (n % 10) * productOfDigit(n / 10);
     }
+    public static void myreverseNumber(int n){
+        ArrayList<Integer> list = new ArrayList<>();
+
+        while (n > 0){
+            int last = n % 10;
+            list.add(last);
+            n /= 10;
+        }
+
+
+        for (int i = 0; i< list.size();i++){
+            System.out.println(list.get(i));
+        }
+
+
+    }
+    static int s = 0;
+    public static void reverseNumberusingOneVariable(int n){
+        if( n == 0) return;
+        int digit = n % 10;
+        s = digit + s * 10;
+        reverseNumberusingOneVariable(n/10);
+
+    }
 }
 
 class Revision{
@@ -560,7 +584,9 @@ public class DataStructureAndAlgorithm {
 //        Recursion2.printNumBoth(5);
 //        System.out.println(Recursion2.sumOfSeries(5));
 
-        System.out.println(Recursion2.sumOfDigit(1956));
-        System.out.println(Recursion2.productOfDigit(14));
+//        System.out.println(Recursion2.sumOfDigit(1956));
+//        System.out.println(Recursion2.productOfDigit(14));
+        Recursion2.reverseNumberusingOneVariable(123);
+        System.out.println(Recursion2.s);
     }
 }
