@@ -545,6 +545,18 @@ class Recursion2{
 
         return rem * (int)(Math.pow(10,digit -1)) + helper(n/10,digit - 1);
     }
+    public static int countZeroFromTheGivenNumber(int n){
+        int count =0;
+        return helpeer(n,count);
+    }
+    private static int helpeer(int n,int count){
+        if(n == 0) return count;
+        int rem = n % 10;
+        if(rem == 0){
+            return helpeer(n/10,count+=1);
+        }
+        return helpeer(n/10,count);
+    }
 }
 
 class Revision{
@@ -601,6 +613,7 @@ public class DataStructureAndAlgorithm {
 //        System.out.println(Recursion2.productOfDigit(14));
 //        Recursion2.reverseNumberusingOneVariable(123);
 //        System.out.println(Recursion2.s);
-        System.out.println(Recursion2.recerseNum(12340));
+//        System.out.println(Recursion2.recerseNum(12340));
+        System.out.println(Recursion2.countZeroFromTheGivenNumber(1000004005));
     }
 }
