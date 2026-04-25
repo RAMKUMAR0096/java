@@ -529,9 +529,21 @@ class Recursion2{
     public static void reverseNumberusingOneVariable(int n){
         if( n == 0) return;
         int digit = n % 10;
-        s = digit + s * 10;
+        s = s * 10 + digit;
         reverseNumberusingOneVariable(n/10);
 
+    }
+    public static int recerseNum(int n){
+        int digit = (int)(Math.log10(n)) + 1;
+        return helper(n, digit);
+    }
+    private static int helper(int n, int digit) {
+        if( n % 10 == n){
+            return n;
+        }
+        int rem = n % 10;
+
+        return rem * (int)(Math.pow(10,digit -1)) + helper(n/10,digit - 1);
     }
 }
 
@@ -579,6 +591,7 @@ public class DataStructureAndAlgorithm {
 //        System.out.printf("%.3f",MathForDsa.sqrt(40,3));
 //        System.out.println();
 //        System.out.println(MathForDsa.newtonSqrt(40));
+
 //        MathForDsa.factors2(20);
 
 //        Recursion2.printNumBoth(5);
@@ -586,7 +599,8 @@ public class DataStructureAndAlgorithm {
 
 //        System.out.println(Recursion2.sumOfDigit(1956));
 //        System.out.println(Recursion2.productOfDigit(14));
-        Recursion2.reverseNumberusingOneVariable(123);
-        System.out.println(Recursion2.s);
+//        Recursion2.reverseNumberusingOneVariable(123);
+//        System.out.println(Recursion2.s);
+        System.out.println(Recursion2.recerseNum(12340));
     }
 }
