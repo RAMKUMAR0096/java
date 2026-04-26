@@ -602,6 +602,24 @@ class RecursionInArray{
         }
         return findTheTargetUsingLinearSearchAndReturnTheArrayList(arr,target,index + 1,list);
     }
+    public static ArrayList<Integer> findTheTargetUsingLinearSearchAndReturnTheArrayListWithoutPassingTheArguments(int[] arr,int target,int index){
+
+        ArrayList<Integer> list = new ArrayList<>();
+
+        if(index == arr.length){
+            return new ArrayList<>();
+        }
+
+        if(arr[index] == target){
+            list.add(index);
+        }
+        ArrayList<Integer> answerFromBelowCalls = findTheTargetUsingLinearSearchAndReturnTheArrayListWithoutPassingTheArguments(arr, target,index+1);
+
+        list.addAll(answerFromBelowCalls);
+
+        return list;
+
+    }
 }
 
 class Revision{
@@ -661,9 +679,10 @@ public class DataStructureAndAlgorithm {
 //        System.out.println(Recursion2.recerseNum(12340));
 //        System.out.println(Recursion2.countZeroFromTheGivenNumber(1000004005));
         int[] arr = { 1, 2, 3, 4, 4, 5, 6, 7};
-        System.out.println(RecursionInArray.findTheTargetUsingLinearSearch(arr,4,0));
-        System.out.println(RecursionInArray.findTheTargetUsingLinearSearchAndReturnTheIndex(arr,4,0));
-        System.out.println(RecursionInArray.findTheTargetFromLastUsingLinearSearchAndReturnTheIndex(arr,4,arr.length-1));
-        System.out.println(RecursionInArray.findTheTargetUsingLinearSearchAndReturnTheArrayList(arr, 4,0, new ArrayList<>()));
+//        System.out.println(RecursionInArray.findTheTargetUsingLinearSearch(arr,4,0));
+//        System.out.println(RecursionInArray.findTheTargetUsingLinearSearchAndReturnTheIndex(arr,4,0));
+//        System.out.println(RecursionInArray.findTheTargetFromLastUsingLinearSearchAndReturnTheIndex(arr,4,arr.length-1));
+//        System.out.println(RecursionInArray.findTheTargetUsingLinearSearchAndReturnTheArrayList(arr, 4,0, new ArrayList<>()));
+        System.out.println(RecursionInArray.findTheTargetUsingLinearSearchAndReturnTheArrayListWithoutPassingTheArguments(arr,4,0));
     }
 }
