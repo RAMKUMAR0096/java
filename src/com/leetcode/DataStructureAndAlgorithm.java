@@ -648,7 +648,7 @@ class RecursionInArray{
 }
 class PatternUsingRecursion{
     public static void pattern(int r,int c){
-        if(r == -1){
+        if(r == 0){
             return;
         }
         if(r > c){
@@ -672,6 +672,38 @@ class PatternUsingRecursion{
 
 
 
+        }
+    }
+    public static void bubbleSort(int[] arr, int first, int last){
+        if(last == 0){
+            return;
+        }
+        if( first < last){
+            if(arr[first] > arr[first + 1]){
+                int temp = arr[first];
+                arr[first] = arr[first + 1];
+                arr[first + 1] = temp;
+            }
+            bubbleSort(arr,first+1,last);
+        }else {
+            bubbleSort(arr,0,last -1);
+        }
+    }
+    public static void selectionSort(int[] arr, int first, int last, int max){
+        if(last == 0){
+            return;
+        }
+        if(first < last){
+            if(arr[first] > arr[max]){
+                selectionSort(arr,first+1,last,first);
+            }else {
+                selectionSort(arr,first + 1,last,max);
+            }
+        }else {
+            int temp = arr[max];
+            arr[max] = arr[last-1];
+            arr[last -1] = temp;
+            selectionSort(arr,0,last-1,0);
         }
     }
 }
@@ -732,13 +764,15 @@ public class DataStructureAndAlgorithm {
 //        System.out.println(Recursion2.s);
 //        System.out.println(Recursion2.recerseNum(12340));
 //        System.out.println(Recursion2.countZeroFromTheGivenNumber(1000004005));
-        int[] arr = { 8, 9, 3, 4, 5, 6, 7};
+        int[] arr = { 18, 9, 3, 4, 5, 6, 7};
 //        System.out.println(RecursionInArray.findTheTargetUsingLinearSearch(arr,4,0));
 //        System.out.println(RecursionInArray.findTheTargetUsingLinearSearchAndReturnTheIndex(arr,4,0));
 //        System.out.println(RecursionInArray.findTheTargetFromLastUsingLinearSearchAndReturnTheIndex(arr,4,arr.length-1));
 //        System.out.println(RecursionInArray.findTheTargetUsingLinearSearchAndReturnTheArrayList(arr, 4,0, new ArrayList<>()));
 //        System.out.println(RecursionInArray.findTheTargetUsingLinearSearchAndReturnTheArrayListWithoutPassingTheArguments(arr,4,0));
 //        System.out.println(RecursionInArray.rotatedBinarySearch(arr,33,0,arr.length-1));
-       PatternUsingRecursion.pattern2(5,0);
+//       PatternUsingRecursion.pattern2(5,0);
+        PatternUsingRecursion.selectionSort(arr,0,arr.length ,0);
+        System.out.println(Arrays.toString(arr));
     }
 }
