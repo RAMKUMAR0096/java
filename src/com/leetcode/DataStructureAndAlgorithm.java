@@ -620,6 +620,60 @@ class RecursionInArray{
         return list;
 
     }
+    public static  int rotatedBinarySearch(int[] arr, int target,int s,int e){
+        if(s > e){
+            return -1;
+        }
+        int m = s + (e - s) / 2;
+        if(arr[m] == target){
+            return m;
+        }
+        if(arr[s] <= arr[m]){
+            if(target <= arr[m] && arr[s] <= target){
+                return rotatedBinarySearch(arr,target,s,m-1);
+            }
+            else {
+                return rotatedBinarySearch(arr,target,m+1,e);
+            }
+        }
+
+        if (target >= arr[m] && target <= arr[e]){
+            return rotatedBinarySearch(arr,target,m + 1,e);
+        }
+        else {
+            return rotatedBinarySearch(arr,target,s,m-1);
+        }
+
+    }
+}
+class PatternUsingRecursion{
+    public static void pattern(int r,int c){
+        if(r == -1){
+            return;
+        }
+        if(r > c){
+            System.out.print('*' + " ");
+            pattern(r,c + 1);
+        }else {
+            System.out.println();
+            pattern(r-1,0);
+        }
+    }
+    public static void pattern2(int r,int c){
+        if(r == 0){
+            return;
+        }
+        if(r > c){
+            pattern2(r,c + 1);
+            System.out.print('*'+ " ");
+        }else {
+            pattern2(r-1,0);
+            System.out.println();
+
+
+
+        }
+    }
 }
 
 class Revision{
@@ -678,11 +732,13 @@ public class DataStructureAndAlgorithm {
 //        System.out.println(Recursion2.s);
 //        System.out.println(Recursion2.recerseNum(12340));
 //        System.out.println(Recursion2.countZeroFromTheGivenNumber(1000004005));
-        int[] arr = { 1, 2, 3, 4, 4, 5, 6, 7};
+        int[] arr = { 8, 9, 3, 4, 5, 6, 7};
 //        System.out.println(RecursionInArray.findTheTargetUsingLinearSearch(arr,4,0));
 //        System.out.println(RecursionInArray.findTheTargetUsingLinearSearchAndReturnTheIndex(arr,4,0));
 //        System.out.println(RecursionInArray.findTheTargetFromLastUsingLinearSearchAndReturnTheIndex(arr,4,arr.length-1));
 //        System.out.println(RecursionInArray.findTheTargetUsingLinearSearchAndReturnTheArrayList(arr, 4,0, new ArrayList<>()));
-        System.out.println(RecursionInArray.findTheTargetUsingLinearSearchAndReturnTheArrayListWithoutPassingTheArguments(arr,4,0));
+//        System.out.println(RecursionInArray.findTheTargetUsingLinearSearchAndReturnTheArrayListWithoutPassingTheArguments(arr,4,0));
+//        System.out.println(RecursionInArray.rotatedBinarySearch(arr,33,0,arr.length-1));
+       PatternUsingRecursion.pattern2(5,0);
     }
 }
