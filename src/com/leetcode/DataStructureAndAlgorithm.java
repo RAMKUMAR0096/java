@@ -719,7 +719,6 @@ class MergeSort{
 
         return merge(right,left);
     }
-
     private static int[] merge(int[] right, int[] left) {
         int[] mix = new int[right.length + left.length];
 
@@ -727,15 +726,6 @@ class MergeSort{
         int j = 0;
         int k = 0;
 
-//        if(left[i] < right[j]){
-//            mix[k] = left[i];
-//            i++;
-//            k++;
-//        }else {
-//            mix[k] = right[j];
-//            j++;
-//            k++;
-//        }
 
         while (i < left.length && j < right.length){
             if(left[i] < right[j]){
@@ -761,6 +751,52 @@ class MergeSort{
         }
 
         return mix;
+    }
+    public static void mergeSortInPlace(int[] arr , int start, int end){
+        if(end - start == 1){
+            return;
+        }
+        int mid = start + (end - start) / 2;
+
+        mergeSortInPlace(arr,start, mid);
+        mergeSortInPlace(arr,mid,end);
+
+        mergeInPlace(arr,start,mid,end);
+    }
+    private static void mergeInPlace(int[] arr, int start,int mid,int end) {
+        int[] mix = new int[end - start];
+
+        int i = start;
+        int j = mid;
+        int k = 0;
+
+
+        while (i < mid && j < end){
+            if(arr[i] < arr[j]){
+                mix[k] = arr[i];
+                i++;
+            }else{
+                mix[k] = arr[j];
+                j++;
+            }
+            k++;
+        }
+
+        while (i < mid){
+            mix[k] = arr[i];
+            i++;
+            k++;
+        }
+
+        while (j < end){
+            mix[k] = arr[j];
+            j++;
+            k++;
+        }
+
+        for (int l = 0; l < mix.length; l++) {
+            arr[start+l] = mix[l];
+        }
     }
 }
 
@@ -831,6 +867,7 @@ public class DataStructureAndAlgorithm {
 //        PatternUsingRecursion.selectionSort(arr,0,arr.length ,0);
 //        System.out.println(Arrays.toString(arr));
 
-        System.out.println(Arrays.toString(MergeSort.mergeSort(arr)));
+      MergeSort.mergeSortInPlace(arr,0,arr.length);
+        System.out.println(Arrays.toString(arr));
     }
 }
