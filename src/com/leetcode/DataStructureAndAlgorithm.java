@@ -799,7 +799,34 @@ class MergeSort{
         }
     }
 }
-
+class QuickSort{
+    public static void quickSort(int[] arr, int low, int high){
+        if(low >= high){
+            return;
+        }
+        int start = low;
+        int end = high;
+        int mid = start+ (end - start) / 2;
+        int pivot = arr[mid];
+        while (start <= end){
+            while (arr[start] < pivot){
+                start++;
+            }
+            while (arr[end] > pivot){
+                end--;
+            }
+            if(start <= end){
+                int temp = arr[start];
+                arr[start] = arr[end];
+                arr[end] = temp;
+                start++;
+                end--;
+            }
+        }
+        quickSort(arr,low,end);
+        quickSort(arr, start,high);
+    }
+}
 class Revision{
     static int[] reverseArray(int[] arr){
         for(int i=0;i<arr.length / 2;i++){
@@ -856,7 +883,7 @@ public class DataStructureAndAlgorithm {
 //        System.out.println(Recursion2.s);
 //        System.out.println(Recursion2.recerseNum(12340));
 //        System.out.println(Recursion2.countZeroFromTheGivenNumber(1000004005));
-        int[] arr = { 18, 9, 3, 4, 5, 6, 7};
+        int[] arr = { 85,45,23,56,78,43,25,75,44};
 //        System.out.println(RecursionInArray.findTheTargetUsingLinearSearch(arr,4,0));
 //        System.out.println(RecursionInArray.findTheTargetUsingLinearSearchAndReturnTheIndex(arr,4,0));
 //        System.out.println(RecursionInArray.findTheTargetFromLastUsingLinearSearchAndReturnTheIndex(arr,4,arr.length-1));
@@ -867,7 +894,9 @@ public class DataStructureAndAlgorithm {
 //        PatternUsingRecursion.selectionSort(arr,0,arr.length ,0);
 //        System.out.println(Arrays.toString(arr));
 
-      MergeSort.mergeSortInPlace(arr,0,arr.length);
+//      MergeSort.mergeSortInPlace(arr,0,arr.length);
+//        System.out.println(Arrays.toString(arr));
+        QuickSort.quickSort(arr,0,arr.length-1);
         System.out.println(Arrays.toString(arr));
     }
 }
