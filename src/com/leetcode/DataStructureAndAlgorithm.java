@@ -827,6 +827,39 @@ class QuickSort{
         quickSort(arr, start,high);
     }
 }
+class StringUsingRecursion{
+    public static String skipA(String s){
+        if(s.isEmpty()){
+            return "";
+        }
+        if(s.charAt(0) == 'a'){
+            return skipA(s.substring(1));
+        }else {
+            return s.charAt(0) + skipA(s.substring(1));
+        }
+    }
+    public static void SkipAInPlace(String p, String s){
+        if(s.isEmpty()){
+            System.out.println(p);
+            return;
+        }
+        if (s.charAt(0) == 'a') {
+            SkipAInPlace(p,s.substring(1));
+        }else {
+            SkipAInPlace(p+s.charAt(0),s.substring(1));
+        }
+    }
+    public static String skipAppNotApple(String s){
+        if(s.isEmpty()){
+            return "";
+        }
+        if(s.startsWith("app") && !s.startsWith("apple")){
+            return skipAppNotApple(s.substring(3));
+        }else {
+            return s.charAt(0) + skipAppNotApple(s.substring(1));
+        }
+    }
+}
 class Revision{
     static int[] reverseArray(int[] arr){
         for(int i=0;i<arr.length / 2;i++){
@@ -883,7 +916,7 @@ public class DataStructureAndAlgorithm {
 //        System.out.println(Recursion2.s);
 //        System.out.println(Recursion2.recerseNum(12340));
 //        System.out.println(Recursion2.countZeroFromTheGivenNumber(1000004005));
-        int[] arr = { 85,45,23,56,78,43,25,75,44};
+//        int[] arr = { 85,45,23,56,78,43,25,75,44};
 //        System.out.println(RecursionInArray.findTheTargetUsingLinearSearch(arr,4,0));
 //        System.out.println(RecursionInArray.findTheTargetUsingLinearSearchAndReturnTheIndex(arr,4,0));
 //        System.out.println(RecursionInArray.findTheTargetFromLastUsingLinearSearchAndReturnTheIndex(arr,4,arr.length-1));
@@ -896,7 +929,10 @@ public class DataStructureAndAlgorithm {
 
 //      MergeSort.mergeSortInPlace(arr,0,arr.length);
 //        System.out.println(Arrays.toString(arr));
-        QuickSort.quickSort(arr,0,arr.length-1);
-        System.out.println(Arrays.toString(arr));
+//        QuickSort.quickSort(arr,0,arr.length-1);
+//        System.out.println(Arrays.toString(arr));
+//        System.out.println(StringUsingRecursion.skipA("bccaabcda"));
+//        StringUsingRecursion.SkipAInPlace("","baacdaahad");
+//        System.out.println(StringUsingRecursion.skipAppNotApple("thisappleapp"));
     }
 }
