@@ -867,6 +867,18 @@ class StringUsingRecursion{
         subSequence(processed + unprocessed.charAt(0),unprocessed.substring(1));
         subSequence(processed,unprocessed.substring(1));
     }
+    public static ArrayList<String> subSequenceInArrayList(String processed,String unprocessed){
+        if(unprocessed.isEmpty()){
+            ArrayList<String> list = new ArrayList<>();
+            list.add(processed);
+            return list;
+        }
+        ArrayList<String> left = subSequenceInArrayList(processed + unprocessed.charAt(0),unprocessed.substring(1));
+        ArrayList<String> right = subSequenceInArrayList(processed,unprocessed.substring(1));
+
+        left.addAll(right);
+        return left;
+    }
 }
 class Revision{
     static int[] reverseArray(int[] arr){
@@ -942,6 +954,9 @@ public class DataStructureAndAlgorithm {
 //        System.out.println(StringUsingRecursion.skipA("bccaabcda"));
 //        StringUsingRecursion.SkipAInPlace("","baacdaahad");
 //        System.out.println(StringUsingRecursion.skipAppNotApple("thisappleapp"));
-        StringUsingRecursion.subSequence("","abc");
+//        StringUsingRecursion.subSequence("","abc");
+        System.out.println(StringUsingRecursion.subSequenceInArrayList("","abc"));
+
+
     }
 }
