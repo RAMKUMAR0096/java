@@ -859,6 +859,14 @@ class StringUsingRecursion{
             return s.charAt(0) + skipAppNotApple(s.substring(1));
         }
     }
+    public static void subSequence(String processed,String unprocessed){
+        if(unprocessed.isEmpty()){
+            System.out.println(processed);
+            return;
+        }
+        subSequence(processed + unprocessed.charAt(0),unprocessed.substring(1));
+        subSequence(processed,unprocessed.substring(1));
+    }
 }
 class Revision{
     static int[] reverseArray(int[] arr){
@@ -934,5 +942,6 @@ public class DataStructureAndAlgorithm {
 //        System.out.println(StringUsingRecursion.skipA("bccaabcda"));
 //        StringUsingRecursion.SkipAInPlace("","baacdaahad");
 //        System.out.println(StringUsingRecursion.skipAppNotApple("thisappleapp"));
+        StringUsingRecursion.subSequence("","abc");
     }
 }
