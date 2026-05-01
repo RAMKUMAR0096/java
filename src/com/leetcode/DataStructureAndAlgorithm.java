@@ -880,6 +880,17 @@ class StringUsingRecursion{
         return left;
     }
 }
+class Dice{
+    public static void makeDice(String processed, int target){
+        if(target == 0){
+            System.out.println(processed);
+            return;
+        }
+        for (int i = 1; i< 6 && i <= target;i++){
+            makeDice(processed + i, target - i);
+        }
+    }
+}
 class Revision{
     static int[] reverseArray(int[] arr){
         for(int i=0;i<arr.length / 2;i++){
@@ -955,7 +966,8 @@ public class DataStructureAndAlgorithm {
 //        StringUsingRecursion.SkipAInPlace("","baacdaahad");
 //        System.out.println(StringUsingRecursion.skipAppNotApple("thisappleapp"));
 //        StringUsingRecursion.subSequence("","abc");
-        System.out.println(StringUsingRecursion.subSequenceInArrayList("","abc"));
+//        System.out.println(StringUsingRecursion.subSequenceInArrayList("","abc"));
+        Dice.makeDice("", 4);
 
 
     }

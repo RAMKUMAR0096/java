@@ -1,5 +1,8 @@
 package com.leetcode;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
 class FindTheDifference {
     public char findTheDifference(String s, String t) {
         String main=s+t;
@@ -236,12 +239,37 @@ class FlipingAnImage{
         return image;
     }
 }
+class PhonePad {
+    public List<String> letterCombinations(String digits) {
+        List<String> s= lc("",digits);
+        return s;
+    }
+
+    static List<String> lc(String processed, String unprocessed){
+        if(unprocessed.isEmpty()){
+            List<String> list = new ArrayList<>();
+            list.add(processed);
+            return list;
+        }
+        List<String> ans = new ArrayList<>();
+
+        int digit = unprocessed.charAt(0) - '0';
+        for (int i = (digit - 1) * 3; i < digit * 3; i++) {
+            char ch = (char)('a' + i);
+            ans.addAll(lc(processed + ch,unprocessed.substring(1)));
+        }
+        return ans;
+    }
+}
 
 
 class Leetcode {
     static void main(String[] args) {
-        int[][] image = {{1,1,0},{1,0,1},{0,0,0}};
-        System.out.println(FlipingAnImage.flipinganImage(image));
+//        int[][] image = {{1,1,0},{1,0,1},{0,0,0}};
+//        System.out.println(FlipingAnImage.flipinganImage(image));
+        PhonePad s = new PhonePad();
+
+        System.out.println(s.letterCombinations("12"));
     }
 }
 
