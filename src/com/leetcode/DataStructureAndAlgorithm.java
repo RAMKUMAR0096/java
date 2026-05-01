@@ -891,6 +891,7 @@ class Dice{
         }
     }
 }
+
 class Revision{
     static int[] reverseArray(int[] arr){
         for(int i=0;i<arr.length / 2;i++){
@@ -967,7 +968,21 @@ public class DataStructureAndAlgorithm {
 //        System.out.println(StringUsingRecursion.skipAppNotApple("thisappleapp"));
 //        StringUsingRecursion.subSequence("","abc");
 //        System.out.println(StringUsingRecursion.subSequenceInArrayList("","abc"));
-        Dice.makeDice("", 4);
+//        Dice.makeDice("", 4);
+//        int arr[][] = {
+//                {1,2,3},
+//                {1,2},
+//                {5,6,7},
+//                {4,6},
+//                {4,5,6}
+//        };
+//        for(int[] a : arr){
+//            System.out.print((a[1]));
+//            for(int c : a){
+////                System.out.print(c);
+//            }
+//            System.out.println();
+//        }
 
 
     }
