@@ -891,6 +891,160 @@ class Dice{
         }
     }
 }
+class CustomArrayList<T>{
+    private Object[] data;
+    private static int DEFAULT_SIZE = 10;
+    private int size = 0;
+
+    CustomArrayList(){
+        this.data = new Object[DEFAULT_SIZE];
+    }
+
+    public void add(T value){
+        if(isFull()){
+            resize();
+        }
+        data[size++] = value;
+    }
+
+    private void resize() {
+        Object[] temp = new Object[data.length * 2];
+
+        for (int i = 0; i < data.length; i++) {
+            temp[i] = (T)(data[i]);
+        }
+
+        data = temp;
+    }
+
+    private boolean isFull() {
+        return size == data.length;
+    }
+
+    public T remove(){
+        T removed = (T)(data[--size]);
+        return removed;
+    }
+
+    public T get(int index){
+        return (T)(data[index]);
+    }
+
+    public int size(){
+        return size;
+    }
+
+    public void set(int index, T value){
+        data[index] = value;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomArrayList{" +
+                "data=" + Arrays.toString(data) +
+                ", size=" + size +
+                '}';
+    }
+}
+class LinkedList{
+    private Node head;
+    private Node tail;
+    private int size;
+
+    public LinkedList() {
+        this.size = 0;
+    }
+
+    public void insertAtBegining(int val){
+        Node node = new Node(val);
+        node.next = head;
+        head = node;
+        if(tail == null) {
+            tail = head;
+        }
+        size++;
+    }
+    public void insertAtLast(int val){
+        if(tail == null){
+            insertAtBegining(val);
+            return;
+        }
+        Node node = new Node(val);
+        tail.next = node;
+        node = tail;
+        size++;
+    }
+    public void displayLinkedList(){
+        Node temp = head;
+        while(temp != null){
+            System.out.print(temp.value + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("END");
+    }
+    public void insertAtindex(int index,int value){
+        if(index == 0){
+            insertAtBegining(value);
+            return;
+        }
+        if(index == size){
+            insertAtLast(value);
+            return;
+        }
+
+        if(index > size){
+            System.out.println("Index is not exists");
+            return;
+        }
+
+        Node temp = head;
+        for (int i = 1; i < index; i++) {
+            temp = temp.next;
+        }
+        Node node = new Node(value,temp.next);
+        temp.next = node;
+        size++;
+    }
+    public void deleteByValue(int value){
+        Node temp = head;
+        while (temp != null){
+            if(temp.next.value == value){
+                temp.next = temp.next.next;
+                size--;
+                return;
+            }
+            temp = temp.next;
+        }
+        System.out.println("Value not found");
+    }
+    public void deleteByIndex(int index){
+        if(index > size){
+            System.out.println("index not exists");
+        }
+        Node temp = head;
+        for (int i = 1; i < index; i++) {
+            temp = temp.next;
+        }
+        temp.next = temp.next.next;
+        size--;
+        return;
+    }
+
+    private class Node{
+        int value;
+        Node next;
+
+        public Node(int data) {
+            this.value = data;
+            this.next = null;
+        }
+
+        public Node(int value,Node next){
+            this.value = value;
+            this.next = next;
+        }
+    }
+}
 
 class Revision{
     static int[] reverseArray(int[] arr){
@@ -905,85 +1059,17 @@ class Revision{
 
 public class DataStructureAndAlgorithm {
     static void main(String[] args)  {
-//        int[] arr = {8,10,11,12,15,16,17,18,20,22,30,32,34,37,40,50,56,58,60,62,64,66,69,70,72,79,80,82,84,86,87,88,89,90};
-//        System.out.println(FindTheFloorFromTheTarget.findTheFloor(arr,9));
-//        System.out.println(FindTheTargetFromInfinityArray.ans(arr,41));
-//        int arr[][] = {{10,20,30,40},{15,25,35,45},{28,29,37,49},{33,34,38,50}};
-//        System.out.println(Arrays.toString(FindTheTargetFrom2DArray.findTheTargetFrom2DArray(arr,49)));
-//          int arr[] = { 2,2,3,2,7,7,8,7,8,8,};
-//        BubbleSort.bubbleSort(arr);
-//        System.out.println(Arrays.toString(arr));
-//          SelectionSort.selectionSort(arr);
-//          InsertionSort.insertionSort(arr);
-//          System.out.println(Arrays.toString(arr));
-//        CycleSort.cycleSort(arr);
-//        System.out.println(Arrays.toString(arr));
-//        Patterns p = new Patterns();
-//        p.pattern6(5);
 
-//        System.out.println(MathForDsa.findUnique(arr,3));
-//        System.out.println(MathForDsa.findTheNthMagicNumber(3));
-
-//        System.out.println(MathForDsa.NoOfDigit(385738959));
-//        int[] arr = {1,1,1,0};
-//         System.out.println(Arrays.toString(Revision.reverseArray(arr)));
-//        for (int i = 0; i <= 40; i++) {
-//            if(MathForDsa.isPrime(i)){
-//                System.out.println(i);
-//            }
-//         System.out.println(i + " " + MathForDsa.isPrime(i));
-//        }
-//        System.out.printf("%.3f",MathForDsa.sqrt(40,3));
-//        System.out.println();
-//        System.out.println(MathForDsa.newtonSqrt(40));
-
-//        MathForDsa.factors2(20);
-
-//        Recursion2.printNumBoth(5);
-//        System.out.println(Recursion2.sumOfSeries(5));
-
-//        System.out.println(Recursion2.sumOfDigit(1956));
-//        System.out.println(Recursion2.productOfDigit(14));
-//        Recursion2.reverseNumberusingOneVariable(123);
-//        System.out.println(Recursion2.s);
-//        System.out.println(Recursion2.recerseNum(12340));
-//        System.out.println(Recursion2.countZeroFromTheGivenNumber(1000004005));
-//        int[] arr = { 85,45,23,56,78,43,25,75,44};
-//        System.out.println(RecursionInArray.findTheTargetUsingLinearSearch(arr,4,0));
-//        System.out.println(RecursionInArray.findTheTargetUsingLinearSearchAndReturnTheIndex(arr,4,0));
-//        System.out.println(RecursionInArray.findTheTargetFromLastUsingLinearSearchAndReturnTheIndex(arr,4,arr.length-1));
-//        System.out.println(RecursionInArray.findTheTargetUsingLinearSearchAndReturnTheArrayList(arr, 4,0, new ArrayList<>()));
-//        System.out.println(RecursionInArray.findTheTargetUsingLinearSearchAndReturnTheArrayListWithoutPassingTheArguments(arr,4,0));
-//        System.out.println(RecursionInArray.rotatedBinarySearch(arr,33,0,arr.length-1));
-//       PatternUsingRecursion.pattern2(5,0);
-//        PatternUsingRecursion.selectionSort(arr,0,arr.length ,0);
-//        System.out.println(Arrays.toString(arr));
-
-//      MergeSort.mergeSortInPlace(arr,0,arr.length);
-//        System.out.println(Arrays.toString(arr));
-//        QuickSort.quickSort(arr,0,arr.length-1);
-//        System.out.println(Arrays.toString(arr));
-//        System.out.println(StringUsingRecursion.skipA("bccaabcda"));
-//        StringUsingRecursion.SkipAInPlace("","baacdaahad");
-//        System.out.println(StringUsingRecursion.skipAppNotApple("thisappleapp"));
-//        StringUsingRecursion.subSequence("","abc");
-//        System.out.println(StringUsingRecursion.subSequenceInArrayList("","abc"));
-//        Dice.makeDice("", 4);
-//        int arr[][] = {
-//                {1,2,3},
-//                {1,2},
-//                {5,6,7},
-//                {4,6},
-//                {4,5,6}
-//        };
-//        for(int[] a : arr){
-//            System.out.print((a[1]));
-//            for(int c : a){
-////                System.out.print(c);
-//            }
-//            System.out.println();
-//        }
-
-
+        LinkedList list = new LinkedList();
+        list.insertAtBegining(4);
+        list.insertAtBegining(49);
+        list.insertAtBegining(6);
+        list.insertAtindex(3,50);
+        list.insertAtindex(3,20);
+        list.displayLinkedList();
+        list.deleteByValue(4);
+        list.displayLinkedList();
+        list.deleteByIndex(2);
+        list.displayLinkedList();
     }
 }
