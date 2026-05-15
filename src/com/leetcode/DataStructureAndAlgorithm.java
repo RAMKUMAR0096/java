@@ -1134,6 +1134,53 @@ class DoublyLinkedList{
         }
     }
 }
+class CircularLinkedList{
+
+
+    private Node head;
+    private Node tail;
+
+    public CircularLinkedList() {
+        this.head = null;
+        this.tail = null;
+    }
+
+    public void insertAtFirst(int value){
+        Node node = new Node(value);
+        if(head == null){
+            head = node;
+            tail = node;
+            return;
+        }
+        tail.next = node;
+        node.next = head;
+        tail = node;
+    }
+    public void displayCLL(){
+        Node temp = head;
+        if(head != null){
+            do{
+                System.out.print(temp.value + " -> ");
+                temp = temp.next;
+            }while (temp != head);
+            System.out.println("HEAD");
+        }
+
+    }
+    private class Node{
+        private int value;
+        private Node next;
+
+        public Node(int value, Node next) {
+            this.value = value;
+            this.next = next;
+        }
+
+        public Node(int value) {
+            this.value = value;
+        }
+    }
+}
 
 class Revision{
     static int[] reverseArray(int[] arr){
@@ -1149,14 +1196,12 @@ class Revision{
 public class DataStructureAndAlgorithm {
     static void main(String[] args)  {
 
-        DoublyLinkedList list = new DoublyLinkedList();
+        CircularLinkedList list = new CircularLinkedList();
 
-        list.insertAtFirst(44);
         list.insertAtFirst(33);
-        list.insertAtFirst(445);
-        list.insertAtLast(1);
-        list.insertAtIndex(0,11);
-        list.insertAtIndex(5,44);
-        list.displayDLL();
+        list.insertAtFirst(22);
+        list.insertAtFirst(11);
+        list.insertAtFirst(16);
+        list.displayCLL();
     }
 }
