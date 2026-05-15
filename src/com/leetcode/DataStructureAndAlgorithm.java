@@ -1,5 +1,7 @@
 package com.leetcode;
 
+import org.w3c.dom.Node;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -1045,6 +1047,93 @@ class LinkedList{
         }
     }
 }
+class DoublyLinkedList{
+    private Node head;
+    private Node tail;
+    private int size;
+
+    public void insertAtFirst(int value){
+        Node node = new Node(value);
+        node.next = head;
+        node.prev = null;
+        if(head != null){
+            head.prev = node;
+        }
+        head = node;
+    }
+    public void insertAtLast(int value){
+        Node node = new Node(value);
+        Node last = head;
+        node.next = null;
+
+        if(head == null){
+            node.prev = null;
+            head = node;
+            return;
+        }
+        while (last.next != null){
+            last = last.next;
+        }
+
+        last.next = node;
+        node.prev = last;
+
+    }
+    public void insertAtIndex(int index, int value){
+        if(index == 0){
+            insertAtFirst(value);
+            return;
+        }
+        Node temp = head;
+
+        for (int i = 0; i < index-1; i++) {
+            temp =  temp.next;
+        }
+        if(temp.next != null){
+            Node node = new Node(value,temp.next,temp);
+            temp.next = node;
+            node.next.prev = node;
+            return;
+        }else {
+            insertAtLast(value);
+        }
+
+    }
+
+    public void displayDLL(){
+        Node temp = head;
+        Node last = null;
+        while (temp != null){
+            System.out.print(temp.value + " -> ");
+            last = temp;
+            temp = temp.next;
+        }
+        System.out.println("END");
+        System.out.println();
+        System.out.println("print in reverse");
+        while (last != null){
+            System.out.print(last.value + " -> ");
+            last = last.prev;
+        }
+        System.out.println("START");
+    }
+
+    private class Node{
+        private int value;
+        private Node next;
+        private Node prev;
+
+        public Node(int value) {
+            this.value = value;
+        }
+
+        public Node(int value, Node next, Node prev) {
+            this.value = value;
+            this.next = next;
+            this.prev = prev;
+        }
+    }
+}
 
 class Revision{
     static int[] reverseArray(int[] arr){
@@ -1060,16 +1149,14 @@ class Revision{
 public class DataStructureAndAlgorithm {
     static void main(String[] args)  {
 
-        LinkedList list = new LinkedList();
-        list.insertAtBegining(4);
-        list.insertAtBegining(49);
-        list.insertAtBegining(6);
-        list.insertAtindex(3,50);
-        list.insertAtindex(3,20);
-        list.displayLinkedList();
-        list.deleteByValue(4);
-        list.displayLinkedList();
-        list.deleteByIndex(2);
-        list.displayLinkedList();
+        DoublyLinkedList list = new DoublyLinkedList();
+
+        list.insertAtFirst(44);
+        list.insertAtFirst(33);
+        list.insertAtFirst(445);
+        list.insertAtLast(1);
+        list.insertAtIndex(0,11);
+        list.insertAtIndex(5,44);
+        list.displayDLL();
     }
 }

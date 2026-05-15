@@ -353,6 +353,28 @@ class IsGood {
     }
 }
 
+class FindMin {
+    public int findMin(int[] nums) {
+        // Arrays.sort(nums);
+        // return nums[0];
+        int start = 0;
+        int end = nums.length -1;
+        int ans = Integer.MAX_VALUE;
+        while(start <= end){
+            int mid = start + (end - start) / 2;
+            if(nums[start] <= nums[mid]){
+                ans = Math.min(ans,nums[start]);
+                start = mid +1;
+            }else{
+                ans = Math.min(ans,nums[mid]);
+                end = mid - 1;
+            }
+        }
+
+        return ans;
+    }
+}
+
 
 class Leetcode {
     static void main(String[] args) {
@@ -371,9 +393,9 @@ class Leetcode {
 //                {".",".",".","4","1","9",".",".","5"},
 //                {".",".",".",".","8",".",".","7","9"}};
 //        SudokuSolverr.solveSudoku(booard);
-        int[]nums = {5, 7, 3, 1, 5, 2, 6, 4};
-        IsGood g = new IsGood();
-        System.out.println(g.isGood(nums));
+        int[]nums = {3,4,5,1,2};
+        FindMin f = new FindMin();
+        System.out.println(f.findMin(nums));
     }
 }
 
