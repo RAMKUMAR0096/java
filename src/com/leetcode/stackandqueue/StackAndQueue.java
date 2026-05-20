@@ -3,17 +3,17 @@ package com.leetcode.stackandqueue;
 
 public class StackAndQueue {
     static void main(String[] args) {
-        DynamicCustomStack stack = new DynamicCustomStack(4);
-        stack.push(4);
-        stack.push(40);
-        stack.push(42);
-        stack.push(44);
-        stack.push(5);
+        CustomQueue queue = new DynamicCustomQueue(2);
 
-        System.out.println(stack.pop());
-        System.out.println(stack.pop());
-        System.out.println(stack.pop());
-        System.out.println(stack.pop());
-        System.out.println(stack.pop());
+        queue.add(44);
+        queue.add(4);
+        queue.add(24);
+        queue.add(89);
+
+        System.out.println(queue.remove());
+        System.out.println(queue.remove());
+        System.out.println(queue.remove());
+        System.out.println(queue.remove());
+        System.out.println(queue.remove());
     }
 }
