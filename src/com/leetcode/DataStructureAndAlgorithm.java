@@ -4,6 +4,7 @@ import org.w3c.dom.Node;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 class  FindTheCeilFromTheTarget{
 //    what is ceil ?
@@ -973,7 +974,7 @@ class LinkedList{
         }
         Node node = new Node(val);
         tail.next = node;
-        node = tail;
+        tail = node;
         size++;
     }
     public void displayLinkedList(){
@@ -1006,6 +1007,49 @@ class LinkedList{
         Node node = new Node(value,temp.next);
         temp.next = node;
         size++;
+    }
+    public void insertAtIndexUsingRecursion(int index, int value){
+        head = insertRec(index,value,head);
+    }
+    public static LinkedList mergelist(LinkedList first,LinkedList second){
+        Node f = first.head;
+        Node s = second.head;
+
+        LinkedList ans = new LinkedList();
+
+        while (f != null && s != null){
+            if(f.value < s.value){
+                ans.insertAtLast(f.value);
+                f = f.next;
+            }else{
+                ans.insertAtLast(s.value);
+                s = s.next;
+            }
+
+        }
+
+        while(f != null){
+            ans.insertAtLast(f.value);
+            f=f.next;
+        }
+
+        while (s != null){
+            ans.insertAtLast(s.value);
+            s = s.next;
+        }
+
+        return ans;
+    }
+
+    private Node insertRec(int index,int value, Node node){
+        if(index == 0){
+            Node newNode = new Node(value);
+            size++;
+            newNode.next = node;
+            return newNode;
+        }
+        node.next = insertRec(--index,value,node.next);
+        return node;
     }
     public void deleteByValue(int value){
         Node temp = head;
@@ -1196,12 +1240,23 @@ class Revision{
 public class DataStructureAndAlgorithm {
     static void main(String[] args)  {
 
-        CircularLinkedList list = new CircularLinkedList();
+        LinkedList list1 = new LinkedList();
+        LinkedList list2 = new LinkedList();
 
-        list.insertAtFirst(33);
-        list.insertAtFirst(22);
-        list.insertAtFirst(11);
-        list.insertAtFirst(16);
-        list.displayCLL();
+        list1.insertAtLast(1);
+        list1.insertAtLast(4);
+        list1.insertAtLast(7);
+        list1.displayLinkedList();
+
+        list2.insertAtLast(2);
+        list2.insertAtLast(3);
+        list2.insertAtLast(5);
+        list2.insertAtLast(8);
+        list2.insertAtLast(9);
+        list2.displayLinkedList();
+
+        LinkedList ans = LinkedList.mergelist(list1,list2);
+        ans.displayLinkedList();
+
     }
 }

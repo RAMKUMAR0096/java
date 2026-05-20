@@ -352,6 +352,29 @@ class IsGood {
         return max+1 == nums.length;
     }
 }
+class FindMinWithDuplicate {
+    public int findMin(int[] nums) {
+        int start = 0;
+        int end = nums.length - 1;
+
+        while (start < end) {
+            int mid = start + (end - start) / 2;
+
+            if (nums[mid] < nums[end]) {
+                end = mid;
+            }
+            else if (nums[mid] > nums[end]) {
+                start = mid + 1;
+            }
+            // duplicates
+            else {
+                end--;
+            }
+        }
+
+        return nums[start];
+    }
+}
 
 class FindMin {
     public int findMin(int[] nums) {
@@ -393,8 +416,8 @@ class Leetcode {
 //                {".",".",".","4","1","9",".",".","5"},
 //                {".",".",".",".","8",".",".","7","9"}};
 //        SudokuSolverr.solveSudoku(booard);
-        int[]nums = {3,4,5,1,2};
-        FindMin f = new FindMin();
+        int[]nums = {2,0,1,1,1};
+        FindMinWithDuplicate f = new FindMinWithDuplicate();
         System.out.println(f.findMin(nums));
     }
 }
