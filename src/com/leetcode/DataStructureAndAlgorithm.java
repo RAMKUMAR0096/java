@@ -1,10 +1,12 @@
 package com.leetcode;
 
+import com.leetcode.trees.BinaryTree;
 import org.w3c.dom.Node;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 class  FindTheCeilFromTheTarget{
 //    what is ceil ?
@@ -1240,23 +1242,10 @@ class Revision{
 public class DataStructureAndAlgorithm {
     static void main(String[] args)  {
 
-        LinkedList list1 = new LinkedList();
-        LinkedList list2 = new LinkedList();
-
-        list1.insertAtLast(1);
-        list1.insertAtLast(4);
-        list1.insertAtLast(7);
-        list1.displayLinkedList();
-
-        list2.insertAtLast(2);
-        list2.insertAtLast(3);
-        list2.insertAtLast(5);
-        list2.insertAtLast(8);
-        list2.insertAtLast(9);
-        list2.displayLinkedList();
-
-        LinkedList ans = LinkedList.mergelist(list1,list2);
-        ans.displayLinkedList();
+        BinaryTree bt = new BinaryTree();
+        Scanner scan = new Scanner(System.in);
+        bt.populate(scan);
+        bt.preetyDisplay();
 
     }
 }
