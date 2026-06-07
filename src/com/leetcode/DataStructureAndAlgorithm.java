@@ -1,12 +1,9 @@
 package com.leetcode;
 
-import com.leetcode.trees.BinaryTree;
-import org.w3c.dom.Node;
+import com.leetcode.trees.AVLTree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
 
 class  FindTheCeilFromTheTarget{
 //    what is ceil ?
@@ -1242,10 +1239,15 @@ class Revision{
 public class DataStructureAndAlgorithm {
     static void main(String[] args)  {
 
-        BinaryTree bt = new BinaryTree();
-        Scanner scan = new Scanner(System.in);
-        bt.populate(scan);
-        bt.preetyDisplay();
-
+//        AVLTree bs = new AVLTree();
+//        bs.populate(new int[] {6, 1, 3, 5, 7, 8, 4, 9});
+//        bs.display();
+//        System.out.println(bs.balanced());
+        AVLTree av = new AVLTree();
+        for (int i = 1; i <= 10; i++) {
+            av.insert(i);
+        }
+        av.display();
+        System.out.println(av.height());
     }
 }
