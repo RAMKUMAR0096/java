@@ -83,6 +83,47 @@ public class LinkedList {
 
     }
 
+    void delete_first(){
+        Node temp = head;
+        head = temp.next;
+        size--;
+        return;
+    }
+
+    void delete_last(){
+        Node temp = head;
+
+        while (temp.next.next != null){
+            temp = temp.next;
+        }
+
+        temp.next = null;
+        size--;
+        return;
+    }
+
+    void deleteAt_index(int index){
+
+        if(index == 0){
+            delete_first();
+            return;
+        }
+
+        if(index == size - 1){
+            delete_last();
+            return;
+        }
+        Node temp = head;
+
+        for (int i = 0; i < index - 1; i++) {
+            temp = temp.next;
+        }
+
+        temp.next = temp.next.next;
+        size--;
+        return;
+    }
+
     void display_linked_list(){
         Node temp = head;
 
@@ -90,7 +131,7 @@ public class LinkedList {
             System.out.print(temp.data + " -> ");
             temp = temp.next;
         }
-        System.out.print("null");
+        System.out.println("null");
     }
 
     static void main(String[] args) {
@@ -101,10 +142,7 @@ public class LinkedList {
         ll.insertAt_begeining(15);
         ll.insertAt_begeining(25);
         ll.insertAt_last(0);
-        ll.insertAt_index(1,20);
-        ll.insertAt_index(6,-5);
-        ll.insertAt_index(-1,-5);
-        ll.insertAt_index(200,-5);
+        ll.display_linked_list();
         ll.display_linked_list();
     }
 }
