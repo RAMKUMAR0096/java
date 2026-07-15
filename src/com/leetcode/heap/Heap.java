@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Heap <T extends Comparable<T>> {
     private ArrayList<T> list;
 
-    Heap(){
+    public Heap(){
         list = new ArrayList<>();
     }
 
@@ -52,7 +52,7 @@ public class Heap <T extends Comparable<T>> {
         }
 
         T temp = list.get(0);
-        T last = list.get(list.size() - 1);
+        T last = list.remove(list.size() - 1);
 
         if (!list.isEmpty()){
             list.set(0, last);
@@ -80,5 +80,14 @@ public class Heap <T extends Comparable<T>> {
             swap(min, index);
             downheap(min);
         }
+    }
+
+    public ArrayList<T> heapSort() throws Exception {
+        ArrayList<T> sort = new ArrayList<>();
+        while (!list.isEmpty()){
+            sort.add(this.remove());
+        }
+
+        return sort;
     }
 }
