@@ -134,15 +134,37 @@ public class LinkedList {
         System.out.println("null");
     }
 
+    void insert_using_recurion(int index, int value){
+        if(index > size){
+            System.out.println("Enter index upto: " + size);
+            return;
+        }
+        head = insertUsingRecurision(index,value,head);
+    }
+
+    private Node insertUsingRecurision(int index, int value, Node node){
+
+        if(index == 0){
+            Node newNode = new Node(value,node);
+            size++;
+            return newNode;
+        }
+
+        node.next = insertUsingRecurision(index = index - 1,value,node.next);
+        return node;
+    }
+
     static void main(String[] args) {
         LinkedList ll = new LinkedList();
 
         ll.insertAt_begeining(5);
         ll.insertAt_begeining(10);
         ll.insertAt_begeining(15);
+        ll.insertAt_begeining(20);
         ll.insertAt_begeining(25);
         ll.insertAt_last(0);
         ll.display_linked_list();
+        ll.insert_using_recurion(3,23);
         ll.display_linked_list();
     }
 }
