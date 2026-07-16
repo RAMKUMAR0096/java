@@ -6,18 +6,34 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class SayHello {
+
+    static int digitalRoot(int n){
+        if(n== 0){
+            return 0;
+        }
+        return (n % 9 == 0) ? 9 : n % 9;
+    }
+
+    static int findSumOfDight(int input){
+
+        while (input >= 10){
+            int output = 0;
+            while (input > 0){
+                int rem = input % 10;
+                output = output + rem;
+                input /= 10;
+            }
+
+            input = output;
+        }
+
+
+
+        return input;
+    }
+
     public static void main(String[] args) throws Exception {
-        Heap<Integer> heap = new Heap<>();
 
-        heap.insert(34);
-        heap.insert(45);
-        heap.insert(22);
-        heap.insert(9);
-        heap.insert(89);
-        heap.insert(7);
-
-        ArrayList<Integer> sor = heap.heapSort();
-
-        System.out.println(sor);
+        System.out.println(findSumOfDight(12346));
     }
 }
