@@ -90,4 +90,8 @@ public class Heap <T extends Comparable<T>> {
 
         return sort;
     }
+
+    public int size() {
+        return list.size();
+    }
 }

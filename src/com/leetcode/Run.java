@@ -2,24 +2,21 @@ package com.leetcode;
 
 import com.leetcode.hashmap.CustomHashMap;
 import com.leetcode.hashmap.RealHashMap;
+import com.leetcode.huffmancoder.Huffman;
+
+import java.util.Scanner;
 
 public class Run {
-    static void main(String[] args) {
-//        CustomHashMap map = new CustomHashMap();
-//
-//        map.put("Apple","A red color fruit");
-//        map.put("Mango","A Yellow color fruit");
-//        map.put("Bomigranat","Ram's favaroute fruit");
-//
-//        System.out.println(map.get("Mango"));
+    static void main(String[] args) throws Exception{
+        Scanner scan = new Scanner(System.in);
 
-        RealHashMap<Integer, String> hm = new RealHashMap<>();
+        System.out.println("Enter the message: ");
+        String message = scan.next();
+        Huffman hm = new Huffman(message);
 
-        hm.put(1,"Ram");
-        hm.put(2,"Ari");
-        hm.put(3,"Pandi");
-        hm.put(4,"Laksh");
-
-        System.out.println(hm.containsKey(20));
+        String cs = hm.encode(message);
+        System.out.println(cs);
+        String m = hm.decode(cs);
+        System.out.println(m);
     }
 }
