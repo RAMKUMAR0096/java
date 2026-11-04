@@ -326,6 +326,14 @@ class Patterns{
             System.out.println();
         }
     }
+    public static void pattern7(int n){
+        for (int i = 1; i <= n; i++) {
+            for(int j = i; j >=1; j--){
+                System.out.print(j+ " ");
+            }
+            System.out.println();
+        }
+    }
 }
 class Recursion{
     public static int fibonacci (int n){
@@ -1243,11 +1251,13 @@ public class DataStructureAndAlgorithm {
 //        bs.populate(new int[] {6, 1, 3, 5, 7, 8, 4, 9});
 //        bs.display();
 //        System.out.println(bs.balanced());
-        AVLTree av = new AVLTree();
-        for (int i = 1; i <= 10; i++) {
-            av.insert(i);
-        }
-        av.display();
-        System.out.println(av.height());
+//        AVLTree av = new AVLTree();
+//        for (int i = 1; i <= 10; i++) {
+//            av.insert(i);
+//        }
+//        av.display();
+//        System.out.println(av.height());
+
+        Patterns.pattern7(5);
     }
 }
