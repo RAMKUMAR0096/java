@@ -9,7 +9,7 @@ class FindTheDifference {
         String main=s+t;
         char mainarr[]=main.toCharArray();
         char unique=0;
-        //In java we have direct option to xor in characters also
+        //NOTE: In java we have direct option to xor in characters also 
         for(char i:mainarr){
             unique=(char)(unique^i);
         }
